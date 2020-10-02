@@ -34,7 +34,7 @@ class Login extends Component {
       <Container id="mess">
         <br/><br/><br/><br/><br/>
         <Card fluid id="lc">
-          <Image id="image"src="https://www.bates.edu/wordpress/files/2016/07/texture-16.jpg" /> <br/>
+          <Image id="image"src="https://lh3.googleusercontent.com/proxy/7hqJ9alnFxGBL81U56qX5To9LnBADZ1ADt-fF_XGRxtON07SgMR_QzO2D35NJQhaxYV99mCuWt34MkaLMNCbdmOr-KZEbliioo3NmJr9r0t_JbqukODWPP7z6wTcrJxyz2L8TQjCFTNYC3gdhoX6PYc" /> <br/>
           <Card.Header id="hdf">Log In</Card.Header><br/>
           <Form autoComplete="off" onSubmit={this.handleSubmit}>
           <br/> 
