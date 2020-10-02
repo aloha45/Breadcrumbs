@@ -7,11 +7,13 @@ import authService from "../../services/authService";
 import Users from '../Users/Users';
 import Welcome from '../Welcome/Welcome'
 import Room from '../Room/Room'
+import CreateRoom from '../CreateRoom/CreateRoom'
 import NowPlaying from '../../components/NowPlaying/NowPlaying';
 import "./App.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import * as spotifyService from '../../services/spotifyService'
-import {Button} from 'semantic-ui-react'
+import {Button} from 'semantic-ui-react';
+import * as roomAPI from '../../services/rooms-api';
 
 const spotifyApi = new SpotifyWebApi()
 
@@ -19,6 +21,7 @@ class App extends Component {
   state = {
     loggedIn: false,
     spotifyToken: '',
+    rooms: [],
     user: authService.getUser(),
     nowPlaying: {
       name: 'Not Checked', 
@@ -28,6 +31,14 @@ class App extends Component {
       notChecked: false
   }
   };
+
+  handleAddRoom = async newRoomData => {
+    const newRoom = await roomAPI.create(newRoomData);
+    newRoom.createdBy = { name: this.state.user.name, _id: this.state.user._id }
+    this.setState(state => ({
+      rooms: [...state.rooms, newRoom]
+    }), () => this.props.history.push('/welcome'));
+  }
 
   handleGetNowPlaying = async newPlayData => {
     const response = await spotifyService.getNowPlaying(newPlayData);
@@ -62,12 +73,14 @@ class App extends Component {
   };
 
   async componentDidMount() {
+    const rooms = await roomAPI.getAll();
     const params = this.getHashParams();
     const token = params.access_token;
     if (token) {
       this.setState({loggedIn: true})
       spotifyApi.setAccessToken(token);
     }
+    this.setState({ rooms })
   }
 
   render() {
@@ -121,7 +134,8 @@ class App extends Component {
           exact
           path="/welcome"
           render={() =>
-            user ? <Welcome /> : <Redirect to="/login" />  
+            user ? <Welcome 
+                    rooms={this.state.rooms}/> : <Redirect to="/login" />  
           }
         />
         <Route
@@ -131,6 +145,15 @@ class App extends Component {
             user ? <Room /> : <Redirect to="/login" />
           }
         />
+        <Route exact path='/createRoom' render={() =>
+          authService.getUser()?
+            <CreateRoom 
+              user={this.state.user}
+              handleAddRoom={this.handleAddRoom}
+            />
+              :
+            <Redirect to='/login' />
+          } />
       </>
     );
   }
