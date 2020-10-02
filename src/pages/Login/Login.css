@@ -19,3 +19,19 @@
   font-size: x-large;
   font-weight: bold;
 }
+
+Button {
+  background-color: #275D7B !important ;
+  color: white !important;
+  border-radius: 50px !important;
+  padding: 20px;
+  width: 200px;
+  height: 50px;
+}
+input {
+    border-radius: 50px !important;
+    padding: 20px;
+    width: 200px;
+    height: 50px;
+  
+}

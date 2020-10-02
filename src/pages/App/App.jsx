@@ -80,12 +80,12 @@ class App extends Component {
           render={() => (
             <div id='main-wrapper'>
               <main>
-              <h1>Welcome to Breadcrumbs.</h1>
-              <Button.Group>
-                <Button>Sign-up</Button>
-                <Button.Or />
-                <Button>Login</Button>
-              </Button.Group>
+              <img src='/logo.png'></img>
+              <h3> DROP A CRUMB PICK ONE UP</h3>
+              <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+              <Button>LOG IN</Button> <br/><br/>
+              <Button>SIGN UP</Button>
+          
               </main>
             </div>
           )}

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { getAllUsers } from "../../services/userService";
 import { Feed, Container, Icon } from 'semantic-ui-react';
-import Footer from '../../components/Footer/Footer'
+import PostFooter from '../../components/PostFooter/PostFooter'
 import NavBar from '../../components/NavBar/NavBar'
+
 
 class Room extends Component {
   state = {
@@ -17,7 +18,6 @@ class Room extends Component {
   render() {
     return (
         <>
-        <NavBar />
         <Container>
         <div id='main-wrapper'>
             <main>
@@ -43,7 +43,7 @@ class Room extends Component {
             </main>
         </div>
         </Container>
-        <Footer />
+        <PostFooter />
       </>
     );
   }
