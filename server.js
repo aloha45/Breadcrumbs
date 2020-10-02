@@ -21,7 +21,9 @@ var redirect_uri = 'http://localhost:3001/callback'; // Your redirect uri
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const uploadRouter = require("./routes/upload");
-const nodemailRouter = require("./routes/nodemail")
+const nodemailRouter = require("./routes/nodemail");
+const roomRouter = require('./routes/rooms');
+const postRouter = require('./routes/posts')
 
 var generateRandomString = function(length) {
   var text = '';
@@ -47,6 +49,8 @@ app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
 app.use("/api/upload", uploadRouter);
 app.use("/api/nodemail", nodemailRouter);
+app.use('/api/rooms', roomRouter)
+app.use('/api/posts', postRouter)
 
 app.use(express.static(__dirname + '/public'))
    app.use(cookieParser());
