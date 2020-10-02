@@ -20,6 +20,7 @@ const NavBar = ({ user, handleLogout }) => {
               <li><a href="/login" className="nav-link">Log In</a></li>
               <li><a href="/users" className="nav-link">Users</a></li>
               <li><a href="/signup" className="nav-link">Sign Up</a></li>
+              <li><a href="http://localhost:3001/loginSpotify" className="nav-link">Spotify</a></li>
             </ul>
           </div>
         </nav>
