@@ -36,9 +36,6 @@ export default class NavBar extends Component {
         >
           <a href="/login">Log-in</a>
         </Menu.Item>
-        <Menu.Item>
-                <a href="https://twitter.com/TeamMYMAtl"><Icon name="twitter square" size="large" id="twitter" /></a>
-            </Menu.Item>
      </Menu>  
      )
     }

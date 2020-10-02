@@ -5,11 +5,13 @@ import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import authService from "../../services/authService";
 import Users from '../Users/Users';
+import Welcome from '../Welcome/Welcome'
+import Room from '../Room/Room'
 import NowPlaying from '../../components/NowPlaying/NowPlaying';
 import "./App.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import * as spotifyService from '../../services/spotifyService'
-import Footer from '../../components/Footer/Footer'
+import {Button} from 'semantic-ui-react'
 
 const spotifyApi = new SpotifyWebApi()
 
@@ -72,15 +74,20 @@ class App extends Component {
     const {user} = this.state
     return (
       <>
-      <div id='main-wrapper'>
-        <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
         <Route
           exact
           path="/"
           render={() => (
-            <main>
+            <div id='main-wrapper'>
+              <main>
               <h1>Welcome to Breadcrumbs.</h1>
-            </main>
+              <Button.Group>
+                <Button>Sign-up</Button>
+                <Button.Or />
+                <Button>Login</Button>
+              </Button.Group>
+              </main>
+            </div>
           )}
         />
         <Route
@@ -110,18 +117,32 @@ class App extends Component {
             user ? <Users /> : <Redirect to="/login" />
           }
         />
-        <NowPlaying 
-          handleGetNowPlaying={this.handleGetNowPlaying}
-          nowPlayingName = {this.state.nowPlaying.name}
-          nowPlayingArtist = {this.state.nowPlaying.artist}
-          nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
-          nowPlayingLink = {this.state.nowPlaying.link}
-          nowPlayingNotChecked = {this.state.nowPlaying.notChecked}/>
-        </div>
-        <Footer />  
+        <Route
+          exact
+          path="/welcome"
+          render={() =>
+            user ? <Welcome /> : <Redirect to="/login" />  
+          }
+        />
+        <Route
+          exact
+          path="/room"
+          render={() =>
+            user ? <Room /> : <Redirect to="/login" />
+          }
+        />
       </>
     );
   }
 }
 
 export default App;
+
+
+        {/* <NowPlaying 
+          handleGetNowPlaying={this.handleGetNowPlaying}
+          nowPlayingName = {this.state.nowPlaying.name}
+          nowPlayingArtist = {this.state.nowPlaying.artist}
+          nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
+          nowPlayingLink = {this.state.nowPlaying.link}
+          nowPlayingNotChecked = {this.state.nowPlaying.notChecked}/> */}
