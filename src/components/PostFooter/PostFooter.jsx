@@ -12,7 +12,7 @@ render(){
   return ( 
     <div id='fd'>
     <Menu size='massive'>
-    
+    <a href='http://localhost:3001/loginSpotify'>
       <Menu.Item      
       name='music'
       active={activeItem === 'music'}
@@ -21,7 +21,8 @@ render(){
       <Icon name='music' /> 
         Music
     </Menu.Item>
-
+    </a>
+    <a href='/createpicpost'>
     <Menu.Item
       name='picture'
       active={activeItem === 'picture'}
@@ -30,7 +31,7 @@ render(){
     <Icon name='image' /> 
       Picture
     </Menu.Item>
-
+    </a>
     <Menu.Item
       position= 'right'
       name='log-in'
