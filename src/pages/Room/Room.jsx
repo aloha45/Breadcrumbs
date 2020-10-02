@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 import { getAllUsers } from "../../services/userService";
+import { getAll } from '../../services/posts-api'
 import { Feed, Container, Icon } from 'semantic-ui-react';
 import PostFooter from '../../components/PostFooter/PostFooter'
 import NavBar from '../../components/NavBar/NavBar'
+// import { getAll } from "../../services/rooms-api";
 
 
 class Room extends Component {
   state = {
     users: [],
+    posts: []
   };
 
   async componentDidMount() {
     const users = await getAllUsers();
-    this.setState({ users });
+    const posts = await getAll()
+    this.setState({ users, posts });
   }
 
   render() {
@@ -25,7 +29,7 @@ class Room extends Component {
                 <Feed>
                     <Feed.Event>
                      <Feed.Label>
-                       <img src='/images/avatar/small/elliot.jpg' />
+                       <img alt='user avatar' src='/images/avatar/small/elliot.jpg' />
                      </Feed.Label>
                      <Feed.Content>
                        <Feed.Summary>
