@@ -23,13 +23,6 @@ class App extends Component {
     spotifyToken: '',
     rooms: [],
     user: authService.getUser(),
-    nowPlaying: {
-      name: 'Not Checked', 
-      albumArt: '?', 
-      artist: 'Not Checked',
-      link: '',
-      notChecked: false
-  }
   };
 
   handleAddRoom = async newRoomData => {
@@ -160,12 +153,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-        {/* <NowPlaying 
-          handleGetNowPlaying={this.handleGetNowPlaying}
-          nowPlayingName = {this.state.nowPlaying.name}
-          nowPlayingArtist = {this.state.nowPlaying.artist}
-          nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
-          nowPlayingLink = {this.state.nowPlaying.link}
-          nowPlayingNotChecked = {this.state.nowPlaying.notChecked}/> */}
