@@ -24,7 +24,7 @@ export default class RoomHeader extends Component {
         </a>
 
         <Menu.Item >
-        <h1>ROOM NAME</h1>
+        <h1>THE LOVE SHACK</h1>
         </Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>

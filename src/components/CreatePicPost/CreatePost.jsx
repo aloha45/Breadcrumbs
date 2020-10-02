@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Checkbox } from 'semantic-ui-react'
+import { Button, Form, Checkbox, Container} from 'semantic-ui-react'
 import axios from "axios"
 
 class CreatePicPost extends Component {
@@ -54,6 +54,9 @@ class CreatePicPost extends Component {
     render() { 
         return ( 
             <>
+            <Container>
+            <br/><br/>
+            <h1>Post a picture</h1>
                 <Form ref={this.formRef} onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <label>Post Title:</label>
@@ -74,6 +77,7 @@ class CreatePicPost extends Component {
                         type='submit'
                         disable={this.state.invalidForm}>Submit</Button>
                 </Form>
+                </Container>
             </>
          );
     }
