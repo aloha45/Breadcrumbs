@@ -1,4 +1,4 @@
-import {React, Component} from 'react'
+import React,{ Component } from 'react'
 import { Form, Card, Button } from 'semantic-ui-react'
 
 class UserProfile extends Component {
@@ -36,9 +36,9 @@ class UserProfile extends Component {
     
     render() { 
         const toEdit = this.state.toEdit;
-        const { name, email, password, passwordConf, avatar} = this.state;
+
         return ( 
-            <>
+            <div>
             {toEdit ?
             <Button onClick={() => this.editProfile()}>Edit Profile</Button> :
             <Button onClick={() => this.viewProfile()}>View Profile</Button>
@@ -46,7 +46,7 @@ class UserProfile extends Component {
             {toEdit ?
             <Card
                 image='/images/avatar/large/elliot.jpg'
-                header={this.props.user.name}
+                header='Cory'
                 meta='User'
                 description='A Breadcrumbs user.'
             /> :
@@ -59,7 +59,7 @@ class UserProfile extends Component {
           type="text"
           autoComplete="off"
           id="name"
-          value={name}
+          value='name'
           name="name"
           onChange={this.handleChange}
         />  
@@ -72,16 +72,16 @@ class UserProfile extends Component {
           type="text"
           autoComplete="off"
           id="email"
-          value={email}
+          value='email'
           name="email"
           onChange={this.handleChange}
         />
         </Form.Field>
 
-        <Button disabled={this.isFormInvalid()}>Sign Up</Button>
+        <Button>Sign Up</Button>
       </Form>
             }
-            </>
+            </div>
          );
     }
 }
