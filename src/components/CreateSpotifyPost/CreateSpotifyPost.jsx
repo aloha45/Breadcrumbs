@@ -1,4 +1,5 @@
-import { Button, Form } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Button, Form, Checkbox } from 'semantic-ui-react'
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import * as spotifyService from '../../services/spotifyService'
 import * as postsAPI from '../../services/posts-api'
@@ -23,28 +24,6 @@ class CreateSpotifyPost extends Component {
      }
     
     formRef = React.createRef()
-
-    handleUploadFile = e => {
-        e.preventDefault()
-        console.log(e)
-        const file = e.target.files[0];
-        const bodyFormData = new FormData();
-        bodyFormData.append('image', file);
-        axios.post("/api/upload/image-upload", bodyFormData, {
-            headers:{
-            'Content-Type': 'multipart/form-data'
-            }
-        }).then(response => {
-            console.log(response);
-            const imgUrl = response.data.imageUrl
-            console.log(imgUrl)
-            this.setState({
-              picture: imgUrl,
-            })
-        }).catch(err =>{
-            console.log(err);
-        });
-    }
 
     handleGetNowPlaying = async newPlayData => {
         const response = await spotifyService.getNowPlaying(newPlayData);

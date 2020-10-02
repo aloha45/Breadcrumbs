@@ -13,6 +13,9 @@ import * as spotifyService from '../../services/spotifyService'
 import {Button} from 'semantic-ui-react';
 import * as roomAPI from '../../services/rooms-api';
 import CreateRoom from '../CreateRoom/CreateRoom'
+import CreateSpotifyPost from "../../components/CreateSpotifyPost/CreateSpotifyPost";
+import CreatePicPost from '../../components/CreatePicPost/CreatePost'
+
 
 const spotifyApi = new SpotifyWebApi()
 
@@ -149,6 +152,25 @@ class App extends Component {
               :
             <Redirect to='/login' />
           } />
+        <Route exact path='/createspotifypost' render={() =>
+          authService.getUser()?
+            <CreateSpotifyPost 
+              user={this.state.user}
+              handleAddRoom={this.handleAddRoom}
+            />
+              :
+            <Redirect to='/login' />
+          } />
+        <Route exact path='/createpicpost' render={() =>
+          authService.getUser()?
+            <CreatePicPost 
+              user={this.state.user}
+              handleAddRoom={this.handleAddRoom}
+            />
+              :
+            <Redirect to='/login' />
+          } />
+        <Route exact path='http://localhost:3001/loginSpotify'/>
       </>
     );
   }
