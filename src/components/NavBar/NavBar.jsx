@@ -1,32 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { Menu, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
+import './NavBar.css'
 
-const NavBar = ({ user, handleLogout }) => {
+
+export default class NavBar extends Component {
+  state = {}
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+    const { activeItem } = this.state
+    const {user, handleLogout } = this.props
+
     return (
-    <>
-      {user ?
-        <nav>
-          <div className="nav-wrapper">
-            <ul id="nav-mobile" className="right">
-              <li><a href=" " className="nav-link">Welcome, {user.name}</a></li>
-              <li><a href="/users" className="nav-link">Users</a></li>
-              <li><a href=" " className="nav-link" onClick={handleLogout}>Log Out</a></li>
-            </ul>
-          </div>
-        </nav>
-      :
-        <nav>
-          <div className="nav-wrapper">
-            <ul id="nav-mobile" className="right">
-              <li><a href="/login" className="nav-link">Log In</a></li>
-              <li><a href="/users" className="nav-link">Users</a></li>
-              <li><a href="/signup" className="nav-link">Sign Up</a></li>
-              <li><a href="http://localhost:3001/loginSpotify" className="nav-link">Spotify</a></li>
-            </ul>
-          </div>
-        </nav>
-      }
-    </>
-  )
-}
+        <Menu stackable id="nav">
+        {/* These links are for visitors not logged in/signed up */}
+          <Menu.Item>
+          <img src='/logo.png' alt="logo"/>
+        </Menu.Item>
+ 
+        <Menu.Item
+          position='right'
+          name='sign-up'
+          active={activeItem === 'testimonials'}
+          onClick={this.handleItemClick}
+        >
+          <a href="/signup">Sign Up</a>
+        </Menu.Item>
 
-export default NavBar;
+        <Menu.Item
+          name='log-in'
+          active={activeItem === 'sign-in'}
+          onClick={this.handleItemClick}
+        >
+          <a href="/login">Log-in</a>
+        </Menu.Item>
+        <Menu.Item>
+                <a href="https://twitter.com/TeamMYMAtl"><Icon name="twitter square" size="large" id="twitter" /></a>
+            </Menu.Item>
+     </Menu>  
+     )
+    }
+}
