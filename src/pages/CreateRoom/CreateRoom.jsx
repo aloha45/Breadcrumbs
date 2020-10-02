@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Container } from 'semantic-ui-react'
 
 class CreateRoom extends Component {
     state = { 
@@ -27,6 +27,8 @@ class CreateRoom extends Component {
     render() { 
         return ( 
             <>
+            <Container>
+            <br/><br/><br/>
                 <Form ref={this.formRef} onSubmit={this.handleSubmit}>
                     <Form.Field>
                     <label>Room Name</label>
@@ -36,6 +38,7 @@ class CreateRoom extends Component {
                         type='submit'
                         disable={this.state.invalidForm}>Submit</Button>
                 </Form>
+                </Container>
             </>
          );
     }

@@ -78,8 +78,8 @@ class CreateSpotifyPost extends Component {
                     nowPlayingNotChecked = {this.state.nowPlaying.notChecked}/>
                 <Form ref={this.formRef} onSubmit={this.handleSubmitAndAddNowPlaying}>
                     <Form.Field>
-                        <label>Post Title:</label>
-                        <input required value={this.state.formData.name} onChange={this.handleChange} name='name' type='text' placeholder='My Room' />
+                        <label>About:</label>
+                        <input required value={this.state.formData.name} onChange={this.handleChange} name='name' type='text' placeholder='' />
                     </Form.Field>
                     <Button
                         type='submit'
