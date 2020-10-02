@@ -140,7 +140,11 @@ class App extends Component {
           exact
           path="/room"
           render={() =>
-            user ? <Room /> : <Redirect to="/login" />
+            user ? <Room 
+                    user={this.state.user}
+                    rooms={this.state.rooms}
+
+            /> : <Redirect to="/login" />
           }
         />
         <Route exact path='/createRoom' render={() =>
