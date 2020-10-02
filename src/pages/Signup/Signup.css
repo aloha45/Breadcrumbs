@@ -5,3 +5,11 @@
   align-items: center;
   margin-bottom: 50px;
 }
+
+input {
+  border-radius: 50px !important;
+  padding: 20px !important;
+  max-width: 400px !important;
+  height: 50px;
+
+}
