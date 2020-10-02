@@ -9,6 +9,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.CLIENT_SECRET;
+const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 require('./config/database');
@@ -20,6 +21,7 @@ var redirect_uri = 'http://localhost:3001/callback'; // Your redirect uri
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const uploadRouter = require("./routes/upload");
+const nodemailRouter = require("./routes/nodemail")
 
 var generateRandomString = function(length) {
   var text = '';
@@ -44,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
 app.use("/api/upload", uploadRouter);
+app.use("/api/nodemail", nodemailRouter);
 
 app.use(express.static(__dirname + '/public'))
    app.use(cookieParser());
