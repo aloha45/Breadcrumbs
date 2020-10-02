@@ -26,9 +26,10 @@ class Welcome extends Component {
         <main>
             <h1>Logged in user landing page</h1>
             {this.props.rooms.map(room =>
-            <Button>Room 1</Button>
+            <a href='/room'>
+              <Button>Room 1</Button>
+            </a>
               )}
-            <Button>Test</Button>
             <Button href='/createRoom'>(+)</Button>
         </main>
       </div>
