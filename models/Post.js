@@ -6,7 +6,7 @@ const postSchema = new Schema(
         title: String,
         createdBy: String,
         song: String,
-        status: String,
+        caption: String,
         picture: String,
         starred: Boolean
     }, {

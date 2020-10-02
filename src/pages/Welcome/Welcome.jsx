@@ -4,7 +4,6 @@ import { getAllUsers } from "../../services/userService";
 import { Button, Container } from 'semantic-ui-react';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
-import * as roomAPI from '../../services/rooms-api';
 import authService from '../../services/authService'
 import "./Welcome.css";
 
