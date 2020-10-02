@@ -1,13 +1,13 @@
-import React from 'react'
-import { Form, Container, Button } from 'semantic-ui-react'
+import {React, Component} from 'react'
+import { Form, Card, Button } from 'semantic-ui-react'
 
 class UserProfile extends Component {
     state = { 
         toEdit: false,
-        formData: this.props.user
+        formData: this.props.user,
+        name: "",
+        email: "",
      }
-
-     formRef= React.createRef();
 
     editProfile() {
         this.setState({
@@ -36,6 +36,7 @@ class UserProfile extends Component {
     
     render() { 
         const toEdit = this.state.toEdit;
+        const { name, email, password, passwordConf, avatar} = this.state;
         return ( 
             <>
             {toEdit ?
@@ -76,32 +77,6 @@ class UserProfile extends Component {
           onChange={this.handleChange}
         />
         </Form.Field>
-        <br/>
-        <br/>
-        <Form.Field>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="password"
-          value={password}
-          name="password"
-          onChange={this.handleChange}
-        />
-        </Form.Field>
-        <br/>
-        <Form.Field>
-        <label htmlFor="confirm">Confirm Password</label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="confirm"
-          value={passwordConf}
-          name="passwordConf"
-          onChange={this.handleChange}
-        />
-        </Form.Field>
-        <br/><br/>
 
         <Button disabled={this.isFormInvalid()}>Sign Up</Button>
       </Form>

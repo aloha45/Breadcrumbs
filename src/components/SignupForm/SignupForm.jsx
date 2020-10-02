@@ -9,7 +9,8 @@ class SignupForm extends Component {
     name: "",
     email: "",
     password: "",
-    passwordConf: ""
+    passwordConf: "",
+    avatar: ""
   };
 
   handleUploadFile = e => {
@@ -57,7 +58,7 @@ class SignupForm extends Component {
     return !(name && email && password === passwordConf);
   }
   render() {
-    const { name, email, password, passwordConf } = this.state;
+    const { name, email, password, passwordConf, avatar } = this.state;
     return (
       <Form autoComplete="off" onSubmit={this.handleSubmit}>
         <br/><br/>
@@ -90,6 +91,20 @@ class SignupForm extends Component {
         </Form.Field>
         <br/>
         <br/>
+        <Form.Field>
+          <label htmlFor="avatar">Profile Picture</label>
+          <input
+            type="text"
+            autoComplete="off"
+            id="avatar"
+            value={avatar}
+            name="avatar"
+            onChange={this.handleChange}
+          />
+          </Form.Field>
+          <input type="file" name="avatar" onChange={this.handleUploadFile}></input>
+          <br/>
+          <br/><br/>
         <Form.Field>
         <label htmlFor="password">Password</label>
         <input
