@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Checkbox } from 'semantic-ui-react'
+import { Button, Form, Checkbox, Container } from 'semantic-ui-react'
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import * as spotifyService from '../../services/spotifyService'
 import * as postsAPI from '../../services/posts-api'
@@ -64,6 +64,11 @@ class CreateSpotifyPost extends Component {
     render() { 
         return ( 
             <>
+            
+            <Container>
+            <br/><br/>
+            <h1> Share some music with your roommates</h1>
+            <br/>
                 <NowPlaying 
                     handleGetNowPlaying={this.handleGetNowPlaying}
                     nowPlayingName = {this.state.nowPlaying.name}
@@ -76,17 +81,11 @@ class CreateSpotifyPost extends Component {
                         <label>Post Title:</label>
                         <input required value={this.state.formData.name} onChange={this.handleChange} name='name' type='text' placeholder='My Room' />
                     </Form.Field>
-                    <Form.Field>
-                        <label>Caption:</label>
-                        <input required value={this.state.formData.caption} onChange={this.handleChange} name='name' type='text' placeholder='Caption your post' />
-                    </Form.Field>
-                    <Form.Field>
-                        <Checkbox label='Starred Post?' />
-                    </Form.Field>
                     <Button
                         type='submit'
                         disable={this.state.invalidForm}>Submit Now Playing</Button>
                 </Form>
+                </Container>
             </>
          );
     }

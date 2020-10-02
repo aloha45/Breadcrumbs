@@ -26,7 +26,7 @@ class Room extends Component {
         <Container>
         <div id='main-wrapper'>
             <main>
-                <h1>Room landing page</h1>
+                <h1>Welcome to the love shack</h1>
                 <Feed>
                     <Feed.Event>
                      <Feed.Label>
@@ -41,7 +41,9 @@ class Room extends Component {
                          <Feed.Like>
                            <Icon name='star' />4 stars
                          </Feed.Like>
+                         
                          <Feed.Extra>
+                             <p>I took some new pics</p>
                              <img src='https://picsum.photos/200/300'></img>
                              <img src='https://picsum.photos/200'></img>
                          </Feed.Extra>
@@ -62,6 +64,7 @@ class Room extends Component {
                            <Icon name='star' />8 stars
                          </Feed.Like>
                        </Feed.Meta>
+                       <p>I love this song!</p>
                        <Embed
                           id='UfQHEpf2q8k'
                           placeholder='https://img.youtube.com/vi/UfQHEpf2q8k/default.jpg'
