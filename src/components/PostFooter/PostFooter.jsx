@@ -32,6 +32,7 @@ render(){
       Picture
     </Menu.Item>
     </a>
+    <a href='/invite'>
     <Menu.Item
       position= 'right'
       name='log-in'
@@ -40,6 +41,7 @@ render(){
    <Icon name='share square' />
           Invite a Roommate
     </Menu.Item>
+      </a>
  </Menu>  
  </div>
 

@@ -12,6 +12,7 @@ export default class RoomHeader extends Component {
 
     return (
       <Menu borderless size='massive'>
+        <a href='/room'>
         <Menu.Item
           position= 'left'
           name='editorials'
@@ -20,6 +21,7 @@ export default class RoomHeader extends Component {
         ><Icon name='left arrow'/>
         
         </Menu.Item>
+        </a>
 
         <Menu.Item >
         <h1>ROOM NAME</h1>

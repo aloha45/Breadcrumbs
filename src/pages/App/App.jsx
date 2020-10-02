@@ -15,7 +15,7 @@ import * as roomAPI from '../../services/rooms-api';
 import CreateRoom from '../CreateRoom/CreateRoom'
 import CreateSpotifyPost from "../../components/CreateSpotifyPost/CreateSpotifyPost";
 import CreatePicPost from '../../components/CreatePicPost/CreatePost'
-
+import Invite from '../../pages/Invite/Invite'
 
 const spotifyApi = new SpotifyWebApi()
 
@@ -165,12 +165,20 @@ class App extends Component {
           authService.getUser()?
             <CreatePicPost 
               user={this.state.user}
-              handleAddRoom={this.handleAddRoom}
             />
               :
             <Redirect to='/login' />
           } />
         <Route exact path='http://localhost:3001/loginSpotify'/>
+        <Route exact path='/invite' render={() =>
+          authService.getUser()?
+            <Invite 
+              user={this.state.user}
+              />
+              :
+              <Redirect to='/login' />
+        }
+        />
       </>
     );
   }
