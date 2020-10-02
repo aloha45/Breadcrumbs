@@ -58,9 +58,9 @@ class Login extends Component {
             />
             <label htmlFor="password">Password</label>
             </Form.Field> <br/> 
-            <Button>Log In</Button>&nbsp;&nbsp;&nbsp;
+            <Button>Log In</Button><br/><br/><br/>
             <Link className="btn red" to="/signup">
-              <Button>Signup</Button>
+              CREATE AN ACCOUNT
             </Link>
             <br/> <br/> <br/> <br/> 
           </Form>

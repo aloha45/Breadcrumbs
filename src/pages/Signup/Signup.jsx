@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SignupForm from '../../components/SignupForm/SignupForm';
+import WelcomeNav from '../../components/WelcomeNav/WelcomeNav';
+
 import './Signup.css';
 
 class Signup extends Component {
@@ -13,10 +15,13 @@ class Signup extends Component {
 
   render() {
     return (
+      <>
+      <WelcomeNav />
       <main>
         <SignupForm {...this.props} updateMessage={this.updateMessage} />
         <p>{this.state.message}</p>
       </main>
+      </>
     );
   }
 }

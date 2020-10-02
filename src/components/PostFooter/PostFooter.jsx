@@ -11,7 +11,7 @@ render(){
 
   return ( 
     <div id='fd'>
-    <Menu>
+    <Menu size='massive'>
     
       <Menu.Item      
       name='music'
