@@ -1,13 +1,16 @@
 import React, { Component } from "react";
+import { Route, Redirect } from "react-router-dom"
 import { getAllUsers } from "../../services/userService";
 import { Button, Container } from 'semantic-ui-react';
-import Footer from '../../components/Footer/Footer'
-import NavBar from '../../components/NavBar/NavBar'
+import Footer from '../../components/Footer/Footer';
+import NavBar from '../../components/NavBar/NavBar';
+import * as roomAPI from '../../services/rooms-api';
+import authService from '../../services/authService'
 import "./Welcome.css";
 
 class Welcome extends Component {
   state = {
-    users: [],
+    user: authService.getUser()
   };
 
   async componentDidMount() {
@@ -23,7 +26,11 @@ class Welcome extends Component {
       <div id='main-wrapper'>
         <main>
             <h1>Logged in user landing page</h1>
+            {this.props.rooms.map(room =>
             <Button>Room 1</Button>
+              )}
+            <Button>Test</Button>
+            <Button href='/createRoom'>(+)</Button>
         </main>
       </div>
       </Container>

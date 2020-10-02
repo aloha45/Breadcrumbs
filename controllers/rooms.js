@@ -16,7 +16,7 @@ function create(req,res) {
 
 function index(req, res) {
     Room.find({})
-    .populated('createdBy')
+    .populate('createdBy')
     .then(rooms => {res.json(rooms)})
     .catch(err => {res.json(err)})
 }
