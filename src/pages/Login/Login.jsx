@@ -22,7 +22,7 @@ class Login extends Component {
     try {
       await authService.login(this.state);
       handleSignupOrLogin();
-      history.push("/");
+      history.push("/welcome");
     } catch (err) {
       alert('Invalid Credentials!');
     }
