@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const roomSchema = new Schema(
     {
-        title: String,
+        name: String,
         posts: [String],
         createdBy: String
     }, {
