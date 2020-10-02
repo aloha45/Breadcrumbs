@@ -1,9 +1,9 @@
 import { Button, Form } from 'semantic-ui-react'
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import * as spotifyService from '../../services/spotifyService'
-import axios from "axios"
+import * as postsAPI from '../../services/posts-api'
 
-class CreatePost extends Component {
+class CreateSpotifyPost extends Component {
     state = { 
         formData: {
             invalidForm: false,
@@ -54,7 +54,15 @@ class CreatePost extends Component {
           artist: response.item.artists[0].name,
           link: response.item.external_urls.spotify,
           notChecked: true}});
-      }
+    }
+
+    handleAddNowPlaying = async (newSong, postId) => {
+        const updatedPost = await postsAPI.update(newSong, postId)
+        const newPostsArray = this.props.posts.map(p =>
+            p._id === updatedPost._id ? updatedPost : p)
+        this.setState({posts: newPostsArray},
+        () => this.props.history.push('/welcome'))
+        }
 
     handleSubmit = e =>{
         e.preventDefault();
@@ -69,6 +77,11 @@ class CreatePost extends Component {
         });
      }
 
+    async handleSubmitAndAddNowPlaying() {
+        await this.handleSubmit()
+        this.handleAddNowPlaying()
+    }
+
     render() { 
         return ( 
             <>
@@ -79,7 +92,7 @@ class CreatePost extends Component {
                     nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
                     nowPlayingLink = {this.state.nowPlaying.link}
                     nowPlayingNotChecked = {this.state.nowPlaying.notChecked}/>
-                <Form ref={this.formRef} onSubmit={this.handleSubmit}>
+                <Form ref={this.formRef} onSubmit={this.handleSubmitAndAddNowPlaying}>
                     <Form.Field>
                         <label>Post Title:</label>
                         <input required value={this.state.formData.name} onChange={this.handleChange} name='name' type='text' placeholder='My Room' />
@@ -89,19 +102,15 @@ class CreatePost extends Component {
                         <input required value={this.state.formData.caption} onChange={this.handleChange} name='name' type='text' placeholder='Caption your post' />
                     </Form.Field>
                     <Form.Field>
-                        <label>Add a photo:</label>
-                        <input type="file" name="picture" class="six wide field" onChange={this.handleUploadFile}></input>
-                    </Form.Field>
-                    <Form.Field>
                         <Checkbox label='Starred Post?' />
                     </Form.Field>
-                    <Button 
+                    <Button
                         type='submit'
-                        disable={this.state.invalidForm}>Submit</Button>
+                        disable={this.state.invalidForm}>Submit Now Playing</Button>
                 </Form>
             </>
          );
     }
 }
  
-export default CreatePost;
+export default CreateSpotifyPost;

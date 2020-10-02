@@ -16,7 +16,7 @@ module.exports = {
 
   function index(req, res) {
       Post.find({})
-      .populated('createdBy')
+      .populate('createdBy')
       .then(posts => {res.json(posts)})
       .catch(err => {res.json(err)})
   }
