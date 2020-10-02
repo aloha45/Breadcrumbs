@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom"
 import { getAllUsers } from "../../services/userService";
 import { Button, Container } from 'semantic-ui-react';
 import Footer from '../../components/Footer/Footer';
-import NavBar from '../../components/NavBar/NavBar';
+import WelcomeNav from '../../components/WelcomeNav/WelcomeNav';
 import authService from '../../services/authService'
 import "./Welcome.css";
 
@@ -20,7 +20,7 @@ class Welcome extends Component {
   render() {
     return (
       <>
-      <NavBar />
+      <WelcomeNav />
       <Container>
       <div id='main-wrapper'>
         <main>
@@ -33,7 +33,7 @@ class Welcome extends Component {
         </main>
       </div>
       </Container>
-        <Footer />
+      <Footer/>
       </>
     );
   }

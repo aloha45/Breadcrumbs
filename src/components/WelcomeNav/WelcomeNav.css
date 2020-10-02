@@ -1,0 +1,16 @@
+#sd {
+    justify-self: center;
+    text-align: center;
+}
+#back {
+    justify-self: left !important;
+    align-items: flex-start;
+    size: 50px;
+}
+#logo {
+   width: clamp(60px, 20vw, 200px);
+
+}
+Input {
+    max-width: 150px !important;
+}
