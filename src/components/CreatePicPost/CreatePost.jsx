@@ -1,4 +1,5 @@
-import { Button, Form } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Button, Form, Checkbox } from 'semantic-ui-react'
 import axios from "axios"
 
 class CreatePicPost extends Component {

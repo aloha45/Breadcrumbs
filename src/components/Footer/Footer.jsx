@@ -12,7 +12,6 @@ render(){
   return ( 
     <div id='fd'>
     <Menu size='massive'>
-    
       <Menu.Item      
       name='star'
       active={activeItem === 'star'}
