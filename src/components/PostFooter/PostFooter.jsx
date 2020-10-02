@@ -37,7 +37,7 @@ render(){
       onClick={this.handleItemClick}
     >
    <Icon name='share square' />
-          Submit
+          Invite a Roommate
     </Menu.Item>
  </Menu>  
  </div>
