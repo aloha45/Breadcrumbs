@@ -9,6 +9,7 @@ import NowPlaying from '../../components/NowPlaying/NowPlaying';
 import "./App.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import * as spotifyService from '../../services/spotifyService'
+import Footer from '../../components/Footer/Footer'
 
 const spotifyApi = new SpotifyWebApi()
 
@@ -71,13 +72,14 @@ class App extends Component {
     const {user} = this.state
     return (
       <>
+      <div id='main-wrapper'>
         <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
         <Route
           exact
           path="/"
           render={() => (
             <main>
-              <h1>Welcome. This is an authorization template.</h1>
+              <h1>Welcome to Breadcrumbs.</h1>
             </main>
           )}
         />
@@ -115,6 +117,8 @@ class App extends Component {
           nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
           nowPlayingLink = {this.state.nowPlaying.link}
           nowPlayingNotChecked = {this.state.nowPlaying.notChecked}/>
+        </div>
+        <Footer />  
       </>
     );
   }

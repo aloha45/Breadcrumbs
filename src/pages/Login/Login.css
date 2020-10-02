@@ -1,7 +1,21 @@
-.LoginPage {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
+#email {
+  max-width: 400px;
+}
+#password {
+  max-width: 400px;
+}
+
+#mess {
+  align-items: center !important;
+  text-align: center !important;
+  max-width: 800px !important;
+}
+
+#image {
+  max-height: 100px;
+}
+
+#hdf {
+  font-size: x-large;
+  font-weight: bold;
 }

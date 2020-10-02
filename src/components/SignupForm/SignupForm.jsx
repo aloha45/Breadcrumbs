@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import './SignupForm.css';
+import { Form, Button } from 'semantic-ui-react';
 import authService from "../../services/authService";
+import axios from "axios"
 
 class SignupForm extends Component {
   state = {
@@ -8,7 +10,32 @@ class SignupForm extends Component {
     email: "",
     password: "",
     passwordConf: "",
+    avatar: '',
+    phone: "",
+    isSeller: false,
   };
+
+  handleUploadFile = e => {
+    e.preventDefault()
+    console.log(e)
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append('image', file);
+    axios.post("/api/upload/image-upload", bodyFormData, {
+        headers:{
+        'Content-Type': 'multipart/form-data'
+        }
+    }).then(response => {
+        console.log(response);
+        const imgUrl = response.data.imageUrl
+        console.log(imgUrl)
+        this.setState({
+          avatar: imgUrl,
+        })
+    }).catch(err =>{
+        console.log(err);
+    });
+}
 
   handleChange = (e) => {
     this.props.updateMessage("");
@@ -16,74 +43,100 @@ class SignupForm extends Component {
       [e.target.name]: e.target.value,
     });
   };
-
   handleSubmit = async (e) => {
-    const { history, updateMessage, handleSignupOrLogin } = this.props;
+    const { history, updateMessage, handleSignupOrLogin, } = this.props;
     e.preventDefault();
     try {
       await authService.signup(this.state);
-      // Let <App> know a user has signed up!
       handleSignupOrLogin();
-      history.push("/");
+        history.push("/");
+        
     } catch (err) {
       updateMessage(err.message);
     }
   };
-
   isFormInvalid() {
     const { name, email, password, passwordConf } = this.state;
     return !(name && email && password === passwordConf);
   }
-
   render() {
-    const { name, email, password, passwordConf } = this.state;
+    const { name, email, password, passwordConf, avatar } = this.state;
     return (
-      <div>
-        <h3>Sign Up</h3>
-        <form autoComplete="off" onSubmit={this.handleSubmit}>
+      <Form autoComplete="off" onSubmit={this.handleSubmit}>
+      <h3>Sign Up</h3>
+          <Form.Field>
+          <label htmlFor="name">Name</label>
           <input
+            placeholder="John Doe"
             type="text"
             autoComplete="off"
             id="name"
             value={name}
             name="name"
+            class="six wide field"
             onChange={this.handleChange}
-          />
-          <label htmlFor="name">Name</label>
+          />  
+          </Form.Field>
+          <br/>
+          <Form.Field>
+          <label htmlFor="email">Email</label>
           <input
+            placeholder="email@domain.com"
             type="text"
             autoComplete="off"
             id="email"
             value={email}
             name="email"
+            class="six wide field"
             onChange={this.handleChange}
           />
-          <label htmlFor="email">Email</label>
+          </Form.Field>
+          <br/>
+          <Form.Field>
+          <label htmlFor="avatar">Avatar Image</label>
+          <input
+            type="text"
+            autoComplete="off"
+            id="avatar"
+            value={avatar}
+            name="avatar"
+            class="six wide field"
+            onChange={this.handleChange}
+          />
+          </Form.Field>
+          <Form.Field>
+                <input type="file" name="avatar" class="six wide field" onChange={this.handleUploadFile}></input>
+            </Form.Field>
+          <br/>
+          <Form.Field>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             autoComplete="off"
             id="password"
             value={password}
             name="password"
+            class="six wide field"
             onChange={this.handleChange}
           />
-          <label htmlFor="password">Password</label>
+          </Form.Field>
+          <br/>
+          <Form.Field>
+          <label htmlFor="confirm">Confirm Password</label>
           <input
             type="password"
             autoComplete="off"
             id="confirm"
             value={passwordConf}
             name="passwordConf"
+            class="six wide field"
             onChange={this.handleChange}
           />
-          <label htmlFor="confirm">Confirm Password</label>
-          <button disabled={this.isFormInvalid()}>Sign Up</button>
-          &nbsp;&nbsp;
-          <Link to="/">Cancel</Link>
-        </form>
-      </div>
+          </Form.Field>
+          <Button disabled={this.isFormInvalid()}>Sign Up</Button>
+        </Form>
+
     );
   }
 }
-
 export default SignupForm;

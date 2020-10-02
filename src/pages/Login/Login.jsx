@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Login.css";
-import authService from "../../services/authService"
+import authService from "../../services/authService";
+import { Form, Image, Container, Button, Card } from 'semantic-ui-react'
+import './Login.css'
 
-class LoginPage extends Component {
+class Login extends Component {
   state = {
     email: "",
     pw: "",
@@ -20,11 +21,9 @@ class LoginPage extends Component {
     e.preventDefault();
     try {
       await authService.login(this.state);
-      // Let <App> know a user has signed up!
       handleSignupOrLogin();
       history.push("/");
     } catch (err) {
-      // Use a modal or toast in your apps instead of alert
       alert('Invalid Credentials!');
     }
   };
@@ -32,35 +31,46 @@ class LoginPage extends Component {
   render() {
     const {email, pw} = this.state
     return (
-      <main className="Login">
-        <h3>Log In</h3>
-        <form autoComplete="off" onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            autoComplete="off"
-            id="email"
-            value={email}
-            name="email"
-            onChange={this.handleChange}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="password"
-            autoComplete="off"
-            id="password"
-            value={pw}
-            name="pw"
-            onChange={this.handleChange}
-          />
-          <label htmlFor="password">Password</label>
-          <button className="btn green">Log In</button>&nbsp;&nbsp;&nbsp;
-          <Link className="btn red" to="/">
-            Cancel
-          </Link>
-        </form>
-      </main>
+      <Container id="mess">
+        <br/><br/><br/><br/><br/>
+        <Card fluid id="lc">
+          <Image id="image"src="https://www.bates.edu/wordpress/files/2016/07/texture-16.jpg" /> <br/>
+          <Card.Header id="hdf">Log In</Card.Header><br/>
+          <Form autoComplete="off" onSubmit={this.handleSubmit}>
+          <br/> 
+            <Form.Field>
+            <input
+              type="text"
+              autoComplete="off"
+              id="email"
+              value={email}
+              name="email"
+              onChange={this.handleChange}
+            />
+            <label htmlFor="email">Email</label>
+            </Form.Field>
+            <br/>
+            <Form.Field>
+            <input
+              type="password"
+              autoComplete="off"
+              id="password"
+              value={pw}
+              name="pw"
+              onChange={this.handleChange}
+            />
+            <label htmlFor="password">Password</label>
+            </Form.Field> <br/> 
+            <Button>Log In</Button>&nbsp;&nbsp;&nbsp;
+            <Link className="btn red" to="/signup">
+              <Button>Signup</Button>
+            </Link>
+            <br/> <br/> <br/> <br/> 
+          </Form>
+        </Card>
+      </Container>
     );
   }
 }
 
-export default LoginPage;
+export default Login;
