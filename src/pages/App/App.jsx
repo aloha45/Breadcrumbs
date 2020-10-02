@@ -89,9 +89,12 @@ class App extends Component {
               <img src='/logo.png'></img>
               <h3> DROP A CRUMB PICK ONE UP</h3>
               <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+              <a href='/login'>
               <Button>LOG IN</Button> <br/><br/>
+              </a>
+              <a href='/signup'>
               <Button>SIGN UP</Button>
-          
+              </a>
               </main>
             </div>
           )}
