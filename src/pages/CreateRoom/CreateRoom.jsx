@@ -30,7 +30,7 @@ class CreateRoom extends Component {
                 <Form ref={this.formRef} onSubmit={this.handleSubmit}>
                     <Form.Field>
                     <label>Room Name</label>
-                    <input required value={this.state.formData.name} onChange={this.handleChange} name='name' type='text' placeholder='My Room' />
+                    <input required value={this.state.formData.name} onChange={this.handleChange} id='name' name='name' type='text' placeholder='My Room' />
                     </Form.Field>
                     <Button 
                         type='submit'

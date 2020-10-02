@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Footer.css'
 import { Form, Button, Menu, Icon} from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export default class Footer extends Component {
 state = {}
@@ -20,14 +21,15 @@ render(){
       <Icon name='star' /> 
         Starred
     </Menu.Item>
-
+    
     <Menu.Item
       name='picture'
       active={activeItem === 'picture'}
       onClick={this.handleItemClick}
     >
     <Icon name='add' /> 
-      Add a Room
+    <Link to='/createroom' >Add a Room</Link>
+
     </Menu.Item>
  </Menu>  
  </div>
