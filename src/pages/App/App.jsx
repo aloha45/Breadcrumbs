@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import authService from "../../services/authService";
 import Users from '../Users/Users';
 import Welcome from '../Welcome/Welcome'
 import Room from '../Room/Room'
-import CreateRoom from '../CreateRoom/CreateRoom'
 import NowPlaying from '../../components/NowPlaying/NowPlaying';
 import "./App.css";
 import SpotifyWebApi from "spotify-web-api-js";
 import * as spotifyService from '../../services/spotifyService'
 import {Button} from 'semantic-ui-react';
 import * as roomAPI from '../../services/rooms-api';
+import CreateRoom from '../CreateRoom/CreateRoom'
 import CreateSpotifyPost from "../../components/CreateSpotifyPost/CreateSpotifyPost";
 import CreatePicPost from '../../components/CreatePicPost/CreatePost'
+
 
 const spotifyApi = new SpotifyWebApi()
 
