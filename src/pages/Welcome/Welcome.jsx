@@ -31,9 +31,6 @@ class Welcome extends Component {
               <Button>{room.name}</Button>
             </a>
               )}
-      <a href='/userprofile'>
-      <Button>See Your Profile</Button>
-      </a>
         </main>
       </div>
       </Container>
@@ -44,3 +41,7 @@ class Welcome extends Component {
 }
 
 export default Welcome;
+
+{/* <a href='/userprofile'>
+<Button>See Your Profile</Button>
+</a> */}
