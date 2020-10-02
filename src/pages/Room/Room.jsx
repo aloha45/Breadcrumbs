@@ -4,7 +4,6 @@ import { getAll } from '../../services/posts-api'
 import { Feed, Container, Icon } from 'semantic-ui-react';
 import PostFooter from '../../components/PostFooter/PostFooter'
 import RoomHeader from '../../components/RoomHeader/RoomHeader'
-import NavBar from '../../components/NavBar/NavBar'
 // import { getAll } from "../../services/rooms-api";
 
 
